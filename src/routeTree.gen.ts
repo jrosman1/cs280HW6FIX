@@ -9,27 +9,265 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as EventsNewRouteImport } from './routes/events/new'
+import { Route as EventsEventIdRouteImport } from './routes/events/$eventId'
+import { Route as EventsEventIdEditRouteImport } from './routes/events/$eventId_/edit'
+import { Route as AuthGithubCallbackRouteImport } from './routes/auth/github/callback'
+import { Route as ApiAuthSigninProviderRouteImport } from './routes/api/auth/signin/$provider'
+import { Route as ApiAuthCallbackProviderRouteImport } from './routes/api/auth/callback/$provider'
 
-export interface FileRoutesByFullPath {}
-export interface FileRoutesByTo {}
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsNewRoute = EventsNewRouteImport.update({
+  id: '/events/new',
+  path: '/events/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsEventIdRoute = EventsEventIdRouteImport.update({
+  id: '/events/$eventId',
+  path: '/events/$eventId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsEventIdEditRoute = EventsEventIdEditRouteImport.update({
+  id: '/events/$eventId_/edit',
+  path: '/events/$eventId/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthGithubCallbackRoute = AuthGithubCallbackRouteImport.update({
+  id: '/auth/github/callback',
+  path: '/auth/github/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthSigninProviderRoute = ApiAuthSigninProviderRouteImport.update({
+  id: '/api/auth/signin/$provider',
+  path: '/api/auth/signin/$provider',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthCallbackProviderRoute = ApiAuthCallbackProviderRouteImport.update({
+  id: '/api/auth/callback/$provider',
+  path: '/api/auth/callback/$provider',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/calendar': typeof CalendarRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/events/$eventId': typeof EventsEventIdRoute
+  '/events/new': typeof EventsNewRoute
+  '/auth/github/callback': typeof AuthGithubCallbackRoute
+  '/events/$eventId/edit': typeof EventsEventIdEditRoute
+  '/api/auth/callback/$provider': typeof ApiAuthCallbackProviderRoute
+  '/api/auth/signin/$provider': typeof ApiAuthSigninProviderRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/calendar': typeof CalendarRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/events/$eventId': typeof EventsEventIdRoute
+  '/events/new': typeof EventsNewRoute
+  '/auth/github/callback': typeof AuthGithubCallbackRoute
+  '/events/$eventId/edit': typeof EventsEventIdEditRoute
+  '/api/auth/callback/$provider': typeof ApiAuthCallbackProviderRoute
+  '/api/auth/signin/$provider': typeof ApiAuthSigninProviderRoute
+}
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/calendar': typeof CalendarRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/events/$eventId': typeof EventsEventIdRoute
+  '/events/new': typeof EventsNewRoute
+  '/auth/github/callback': typeof AuthGithubCallbackRoute
+  '/events/$eventId_/edit': typeof EventsEventIdEditRoute
+  '/api/auth/callback/$provider': typeof ApiAuthCallbackProviderRoute
+  '/api/auth/signin/$provider': typeof ApiAuthSigninProviderRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: never
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/calendar'
+    | '/login'
+    | '/profile'
+    | '/events/$eventId'
+    | '/events/new'
+    | '/auth/github/callback'
+    | '/events/$eventId/edit'
+    | '/api/auth/callback/$provider'
+    | '/api/auth/signin/$provider'
   fileRoutesByTo: FileRoutesByTo
-  to: never
-  id: '__root__'
+  to:
+    | '/'
+    | '/$'
+    | '/calendar'
+    | '/login'
+    | '/profile'
+    | '/events/$eventId'
+    | '/events/new'
+    | '/auth/github/callback'
+    | '/events/$eventId/edit'
+    | '/api/auth/callback/$provider'
+    | '/api/auth/signin/$provider'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/calendar'
+    | '/login'
+    | '/profile'
+    | '/events/$eventId'
+    | '/events/new'
+    | '/auth/github/callback'
+    | '/events/$eventId_/edit'
+    | '/api/auth/callback/$provider'
+    | '/api/auth/signin/$provider'
   fileRoutesById: FileRoutesById
 }
-export interface RootRouteChildren {}
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  CalendarRoute: typeof CalendarRoute
+  LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
+  EventsEventIdRoute: typeof EventsEventIdRoute
+  EventsNewRoute: typeof EventsNewRoute
+  AuthGithubCallbackRoute: typeof AuthGithubCallbackRoute
+  EventsEventIdEditRoute: typeof EventsEventIdEditRoute
+  ApiAuthCallbackProviderRoute: typeof ApiAuthCallbackProviderRoute
+  ApiAuthSigninProviderRoute: typeof ApiAuthSigninProviderRoute
 }
 
-const rootRouteChildren: RootRouteChildren = {}
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/new': {
+      id: '/events/new'
+      path: '/events/new'
+      fullPath: '/events/new'
+      preLoaderRoute: typeof EventsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$eventId': {
+      id: '/events/$eventId'
+      path: '/events/$eventId'
+      fullPath: '/events/$eventId'
+      preLoaderRoute: typeof EventsEventIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$eventId_/edit': {
+      id: '/events/$eventId_/edit'
+      path: '/events/$eventId/edit'
+      fullPath: '/events/$eventId/edit'
+      preLoaderRoute: typeof EventsEventIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/github/callback': {
+      id: '/auth/github/callback'
+      path: '/auth/github/callback'
+      fullPath: '/auth/github/callback'
+      preLoaderRoute: typeof AuthGithubCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/signin/$provider': {
+      id: '/api/auth/signin/$provider'
+      path: '/api/auth/signin/$provider'
+      fullPath: '/api/auth/signin/$provider'
+      preLoaderRoute: typeof ApiAuthSigninProviderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/callback/$provider': {
+      id: '/api/auth/callback/$provider'
+      path: '/api/auth/callback/$provider'
+      fullPath: '/api/auth/callback/$provider'
+      preLoaderRoute: typeof ApiAuthCallbackProviderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  CalendarRoute: CalendarRoute,
+  LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
+  EventsEventIdRoute: EventsEventIdRoute,
+  EventsNewRoute: EventsNewRoute,
+  AuthGithubCallbackRoute: AuthGithubCallbackRoute,
+  EventsEventIdEditRoute: EventsEventIdEditRoute,
+  ApiAuthCallbackProviderRoute: ApiAuthCallbackProviderRoute,
+  ApiAuthSigninProviderRoute: ApiAuthSigninProviderRoute,
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()

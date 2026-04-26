@@ -8,7 +8,16 @@
  * @module
  */
 
+import type * as auth from "../auth.js";
+import type * as authHelpers from "../authHelpers.js";
+import type * as crons from "../crons.js";
+import type * as events from "../events.js";
 import type * as hello from "../hello.js";
+import type * as http from "../http.js";
+import type * as reminders from "../reminders.js";
+import type * as rsvps from "../rsvps.js";
+import type * as seed from "../seed.js";
+import type * as users from "../users.js";
 
 import type {
   ApiFromModules,
@@ -17,7 +26,16 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  auth: typeof auth;
+  authHelpers: typeof authHelpers;
+  crons: typeof crons;
+  events: typeof events;
   hello: typeof hello;
+  http: typeof http;
+  reminders: typeof reminders;
+  rsvps: typeof rsvps;
+  seed: typeof seed;
+  users: typeof users;
 }>;
 
 /**
