@@ -6,7 +6,7 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/",
+  base: process.env.GITHUB_ACTIONS ? "/cs280HW6FIX/" : "/",
   plugins: [tanstackRouter(), react(), tailwindcss()],
   resolve: {
     alias: {
